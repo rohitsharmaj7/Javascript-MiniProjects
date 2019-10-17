@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript">
+		function notifier()
+		{
+		 if (!("Notification" in window))
+		 {
+                   alert("This browser does not support desktop notification");
+                 }
+                 var prm = Notification.permission;
+                 if (prm == 'default' || prm == 'denied') 
+		 {
+    	          Notification.requestPermission(function (permission) {
+                  // If the user accepts, let's create a notification
+                  if (permission === "granted") 
+                  {
+                   var notification = new Notification("Hi there rohit!");
+                  }
+                  });
+                }
+		else
+		{
+                 console.log("permission granted");
+                }
+	       }	
+		window.setInterval(function(){
+                   notifier();
+                }, 2000);
+	</script>
+</head>
+<body>
+    Hello there!
+</body>
+</html>
